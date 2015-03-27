@@ -15,3 +15,13 @@
 /log/*
 !/log/.keep
 /tmp
+
+#ignore environment variables
+.env
+
+#ignore ds store 
+.DS_Store
+
+#ignore database details
+/config/database.yml
+/config/secrets.yml
