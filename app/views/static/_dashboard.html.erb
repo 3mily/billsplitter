@@ -1,15 +1,56 @@
- <% if @events %>
+  <div class="switch-light-container">
+    <label class="switch-light">
+      <input type="checkbox" id="event-type-toggle">
+      <span>
+        <span>Current Events</span>
+        <span>Past Events</span>
+      </span>
+      <a class="btn btn-warning"></a>
+    </label>
+  </div>
+
+<% if @events %>
+
+  <div id="current-events">
     <% @events.each do |event| %>
       <% if !event.closed? %>
         <div>
           <p>
           <strong><%= event.name %></strong> | <%= event.location %><br>
-          <%= @event.cost %>
-
+          <%= event.cost %>
           </p>
         </div>
+      <% else %>
+        <p>No current events.
       <% end %>
-
     <% end %>
-  <% end %>
+  </div>
+
+  <div id="past-events" class="hidden">
+    <% @events.each do |event| %>
+      <% if event.closed? %>
+        <div>
+          <p>
+          <strong><%= event.name %></strong> | <%= event.location %><br>
+          <%= event.cost %>
+          </p>
+        </div>
+      <% else %>
+        <p>No past events.
+      <% end %>
+    <% end %>
+  </div
+
+<% else %>
+  <p>You have made no events yet!</p>
 <% end %>
+
+
+<script>
+  $(function(){
+    $("#event-type-toggle").on("click", function(){
+      $("#current-events").toggleClass("hidden");
+      $("#past-events").toggleClass("hidden");
+    });
+  });
+</script>
