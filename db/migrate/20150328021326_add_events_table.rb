@@ -4,7 +4,7 @@ class AddEventsTable < ActiveRecord::Migration
       t.string :name
       t.string :location
       t.integer :cost
-      t.boolean :closed?
+      t.boolean :closed?, default: false
       t.datetime :start
       t.datetime :end
       t.references :user, index: true

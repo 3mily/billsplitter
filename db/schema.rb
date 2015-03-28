@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328021530) do
+ActiveRecord::Schema.define(version: 20150328205154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "attendees", force: :cascade do |t|
     t.string  "email"
-    t.boolean "pre_auth?"
+    t.boolean "pre_auth?",  default: false
     t.integer "event_id"
     t.integer "contact_id"
   end
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150328021530) do
     t.string   "name"
     t.string   "location"
     t.integer  "cost"
-    t.boolean  "closed?"
+    t.boolean  "closed?",  default: false
     t.datetime "start"
     t.datetime "end"
     t.integer  "user_id"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150328021530) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "stripe_key"
   end
 
 end
