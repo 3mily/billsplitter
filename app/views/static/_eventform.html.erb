@@ -1,12 +1,38 @@
 <%= form_tag events_path do %>
+  <h1>Create an Event</h1>
   <div>
-    <%= label_tag "Event Name"%> </br>
-    <%= text_field_tag "Event Name", nil %>
+    <%= label_tag "Name"%> </br>
+    <%= text_field_tag "Name"%>
   </div>
 
   <div>
-    <%= label_tag "Event Location"%> </br>
-    <%= text_field_tag "Event Location"%>
+    <%= label_tag "Location"%> </br>
+    <%= text_field_tag "Location"%>
+  </div>
+
+  <div>
+    <%= label_tag "Cost"%>
+    <%= text_field_tag "Cost"%>
+  </div>
+
+  <div>
+    <%= label_tag "Start Date"%>
+    <%= select_date Date.today, prefix: :start_date %>
+    <%= label_tag "Start Time"%>
+    <%= select_time Time.now, ampm: true, minute_step: 15, prefix: :start_time %>
+  </div>
+
+  <div>
+    <%= label_tag "End Date"%>
+    <%= select_date Date.today, prefix: :start_date %>
+    <%= label_tag "End Time"%>
+    <%= select_time Time.now, ampm:true, minute_step: 15, prefix: :start_time %>
+  </div>
+
+  </br>
+
+  <div>
+    <%= submit_tag "Create Event"%>
   </div>
 
 <% end %>
