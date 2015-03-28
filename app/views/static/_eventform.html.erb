@@ -19,14 +19,14 @@
     <%= label_tag "Start Date"%>
     <%= select_date Date.today, prefix: :start_date %>
     <%= label_tag "Start Time"%>
-    <%= select_time Time.now, prefix: :start_time %>
+    <%= select_time Time.now, ampm: true, minute_step: 15, prefix: :start_time %>
   </div>
 
   <div>
     <%= label_tag "End Date"%>
     <%= select_date Date.today, prefix: :start_date %>
     <%= label_tag "End Time"%>
-    <%= select_time Time.now, prefix: :start_time %>
+    <%= select_time Time.now, ampm:true, minute_step: 15, prefix: :start_time %>
   </div>
 
   </br>
