@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root 'static#index'
+  root 'static#test'
   resources :users, only: [:create, :update, :destroy]
   resource :session, only: [:new, :create, :destroy]
   resources :events, only: [:create, :update, :destroy]
