@@ -1,1 +1,15 @@
-_dashboard.html.erb
+ <% if @events %>
+    <% @events.each do |event| %>
+      <% if !event.closed? %>
+        <div>
+          <p>
+          <strong><%= event.name %></strong> | <%= event.location %><br>
+          <%= @event.cost %>
+
+          </p>
+        </div>
+      <% end %>
+
+    <% end %>
+  <% end %>
+<% end %>
