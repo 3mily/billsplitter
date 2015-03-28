@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'static#test'
   resources :users, only: [:create, :update, :destroy]
   resource :session, only: [:new, :create, :destroy]
-  resources :events, only: [:create, :update, :destroy]
+  resources :events, only: [:new, :create, :update, :destroy]
   resources :cards, only: [:create, :destroy]
   resources :attendees, only: [:create]
   resources :contacts, only: [:create, :update, :destroy]

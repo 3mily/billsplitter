@@ -1,5 +1,9 @@
 class EventsController < ApplicationController
 
+  def new
+    render :eventform
+  end
+
   def create
     @event = Event.new
     s_hour = params["start_time"]["hour"]
