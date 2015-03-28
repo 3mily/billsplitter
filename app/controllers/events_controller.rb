@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    @contacts = Contact.all
     @event = Event.new
     s_hour = params["start_time"]["hour"]
     s_minute = params["start_time"]["minute"]
@@ -20,6 +21,6 @@ class EventsController < ApplicationController
 
     @event.save
 
-    render :details
+    render :inviteform
   end
 end
