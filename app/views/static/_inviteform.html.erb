@@ -1,1 +1,18 @@
-_inviteform.html.erb
+<h1>Invite from your contact list</h1>
+<%= form_tag attendees_path do %>
+  <div>
+    <%= label_tag "Contacts to invite:"%><br>
+    <% if @contacts %>
+      <% @contacts.each do |contact| %>
+        <div><%= check_box_tag contact %><span>
+        <%= label_tag contact, contact %></span>
+        </div>
+      <% end %>
+    <% else %>
+      You have no contacts!
+    <% end %>
+  </div>
+    
+
+<div><%= submit_tag "Submit" %></div>    
+<% end %>
