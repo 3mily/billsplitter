@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :events, only: [:create, :update, :destroy]
   resources :cards, only: [:create, :destroy]
+  resources :payments
   resources :attendees, only: [:create]
   resources :contacts, only: [:create, :update, :destroy]
 
