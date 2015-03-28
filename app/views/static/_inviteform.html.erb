@@ -2,17 +2,18 @@
 <%= form_tag attendees_path do %>
   <div>
     <%= label_tag "Contacts to invite:"%><br>
-    <% if @contacts %>
+      <select multiple="multiple" id="my-select" name="my-select[]">
       <% @contacts.each do |contact| %>
-        <div><%= check_box_tag contact %><span>
-        <%= label_tag contact, contact %></span>
-        </div>
+        <option class="contact" value=<%= contact.id %>> <%= contact.firstname %> <%=contact.lastname%></option>
       <% end %>
-    <% else %>
-      You have no contacts!
-    <% end %>
+      </select>
+  	  <select multiple="multiple" id="selected" name="my-select[]">
+  	  </select>
   </div>
     
 
 <div><%= submit_tag "Submit" %></div>    
 <% end %>
+
+
+<br>
