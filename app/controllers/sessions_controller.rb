@@ -1,16 +1,18 @@
 class SessionsController < ApplicationController
 
   def create
-    user = User.find_by(email: params[:email])
+    # user = User.find_by(email: params[:email])
 
-    if user && user.authenticate(params[:password])
-      debugger
-      session[:user_id] = user.id
-      debugger
-    else
-      flash[:alert] = "Login failed!"
-      debugger
-    end
+    # if user && user.authenticate(params[:password])
+      # debugger
+      # session[:user_id] = user.id
+      # debugger
+      response.headers['X-PJAX-URL'] = "http://localhost:3000/events/details"
+      render '/events/details'
+    # else
+      # flash[:alert] = "Login failed!"
+      # debugger
+    # end
   end
 
   def destroy
