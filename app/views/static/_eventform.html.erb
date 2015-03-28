@@ -1,1 +1,12 @@
-_eventform.html.erb
+<%= form_tag events_path do %>
+  <div>
+    <%= label_tag "Event Name"%> </br>
+    <%= text_field_tag "Event Name", nil %>
+  </div>
+
+  <div>
+    <%= label_tag "Event Location"%> </br>
+    <%= text_field_tag "Event Location"%>
+  </div>
+
+<% end %>
