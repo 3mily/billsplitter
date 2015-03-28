@@ -1,6 +1,4 @@
-<%content_for :title do%>
-  Event Form
-<%end%>
+<title>Event Form</title>
 
 <%= form_tag events_path, id: 'events-pjax' do %>
 
@@ -29,9 +27,9 @@
 
   <div>
     <%= label_tag "End Date"%>
-    <%= select_date Date.today, prefix: :start_date %>
+    <%= select_date Date.today, prefix: :end_date %>
     <%= label_tag "End Time"%>
-    <%= select_time Time.now, ampm:true, minute_step: 15, prefix: :start_time %>
+    <%= select_time Time.now, ampm:true, minute_step: 15, prefix: :end_time %>
   </div>
 
   </br>
