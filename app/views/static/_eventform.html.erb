@@ -1,4 +1,9 @@
-<%= form_tag events_path do %>
+<%content_for :title do%>
+  Event Form
+<%end%>
+
+<%= form_tag events_path, id: 'events-pjax' do %>
+
   <h1>Create an Event</h1>
   <div>
     <%= label_tag "Name"%> </br>

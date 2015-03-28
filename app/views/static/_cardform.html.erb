@@ -1,4 +1,7 @@
-<%= form_tag cards_path do %>
+<%content_for :title do%>
+  Credit Card Form
+<%end%>
+<%= form_tag cards_path, id: 'card-pjax' do %>
   <h1>Authorize Payment</h1>
   <div class="field">
     <%= label_tag :email %>
@@ -22,6 +25,7 @@
   </div>
 
 </div>
+
 
 
 <% end %>
