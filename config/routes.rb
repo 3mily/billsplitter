@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'static#test'
-  get "/events/details", to: 'events#details', as: 'eventsdetails'
-  get "/attendees", to: 'events#confirmation', as: 'attendeesconfirm'
+  get '/events/details', to: 'events#details', as: 'eventsdetails'
+  get '/attendees', to: 'events#confirmation', as: 'attendeesconfirm'
   resources :users, only: [:create, :update, :destroy]
   resource :session, only: [:new, :create, :destroy]
   resources :events, only: [:new, :create, :update, :destroy]
