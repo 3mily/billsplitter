@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.pjax
 //= require_tree .
+
+$(document).pjax('a', '#pjax-container')

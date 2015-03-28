@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Billgates</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' =>
-   true %>
-  <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
+
+  <title><%= yield :title%></title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
 </head>
 <body>
-
-<%= render 'layouts/header' %>
-<%= yield %>
-
+  <%= render 'layouts/header' %>
+  <div id="pjax-container">
+    <%= yield %>
+  </div>
 </body>
 </html>
