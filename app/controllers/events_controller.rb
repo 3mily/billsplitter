@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
 
+  def new
+    render :eventform
+  end
+
   def create
+    @contacts = Contact.all
     @event = Event.new
     s_year = params["start_date"]["year"]
     s_month = params["start_date"]["month"]
@@ -20,8 +25,8 @@ class EventsController < ApplicationController
     @event.end = e_time
     binding.pry
     @event.save
-
-    render :details
+    response.headers['X-PJAX-URL'] = "http://localhost:3000/events/invite"
+    render :inviteform
   end
 
 
