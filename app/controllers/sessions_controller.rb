@@ -4,9 +4,12 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
 
     if user && user.authenticate(params[:password])
+      debugger
       session[:user_id] = user.id
+      debugger
     else
       flash[:alert] = "Login failed!"
+      debugger
     end
   end
 
