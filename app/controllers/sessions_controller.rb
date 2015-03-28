@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
       # debugger
       # session[:user_id] = user.id
       # debugger
+      response.headers['X-PJAX-URL'] = "http://localhost:3000/events/details"
       render '/events/details'
     # else
       # flash[:alert] = "Login failed!"

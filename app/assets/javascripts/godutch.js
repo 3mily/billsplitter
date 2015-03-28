@@ -7,5 +7,6 @@ $( document ).ready(function() {
 
 
 $(document).on('submit', '#invite-pjax', function(event) {
-  $.pjax.submit(event, '#pjax-container')
+  $.pjax.submit(event, '#pjax-container');
+
 })

@@ -20,7 +20,7 @@ class EventsController < ApplicationController
     @event.end = e_time
 
     @event.save
-
+    response.headers['X-PJAX-URL'] = "http://localhost:3000/events/invite"
     render :inviteform
   end
 end
