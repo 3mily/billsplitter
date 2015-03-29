@@ -1,57 +1,60 @@
+<div class="main-container">
+  <title>Event Form</title>
 
-<title>Event Form</title>
-
-<%= form_tag events_path, id: 'events-pjax' , class: "form-horizontal" do %>
+  <%= form_tag events_path, id: 'events-pjax' , class: "form-horizontal" do %>
 
 
-  <h1><i class="fa fa-calendar"></i> Create an Event</h1>
-  <p>Decide upon an event - we'll later choose whom to invite!</p>
-  <div class="form-group">
-    <%= label_tag "Name", nil, class: 'col-sm-2 control-label' %> 
-    <div class="col-sm-10">
-      <%= text_field_tag "Name", nil, class: 'form-control'%>
+    <h1><i class="fa fa-calendar"></i> Create an Event</h1>
+    <p>Decide upon an event - we'll later choose whom to invite!</p>
+    <hr>
+    <div class="form-input">
+      <div class="form-group">
+        <%= label_tag "Name", nil, class: 'col-sm-2 control-label' %> 
+        <div class="col-sm-10">
+          <%= text_field_tag "Name", nil, class: 'form-control'%>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= label_tag "Location", nil, class: 'col-sm-2 control-label'%> 
+        <div class='col-sm-10'>
+          <%= text_field_tag "Location", nil, class: 'form-control'%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "Cost $", nil, class: 'col-sm-2 control-label'%>
+        <div class='col-sm-10'>
+          <%= text_field_tag "Cost", nil, class: 'form-control'%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "Description", nil, class: 'col-sm-2 control-label'%>
+        <div class='col-sm-10'>
+          <%= text_field_tag "Description", nil, class: 'form-control'%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag "Start Date", nil, class: "control-label" %>
+        <%= select_date Date.today, prefix: :start_date, class: 'form-control' %>
+        <%= label_tag "Start Time", nil, class: 'control-label' %>
+        <%= select_time Time.now, ampm: true, minute_step: 15, prefix: :start_time , class: 'form-control'%>
+      </div>
+
+
+      <div class="form-group">
+        <%= label_tag "End Date" %>
+        <%= select_date Date.today, prefix: :end_date %>
+        <%= label_tag "End Time"%>
+        <%= select_time Time.now, ampm:true, minute_step: 15, prefix: :end_time %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <%= label_tag "Location", nil, class: 'col-sm-2 control-label'%> 
-    <div class='col-sm-10'>
-      <%= text_field_tag "Location", nil, class: 'form-control'%>
-    </div>
-  </div>
+    </br>
+    
+      <%= submit_tag "Create", class: "btn btn-primary btn-lg" %>
+    </br><br>
 
-  <div class="form-group">
-    <%= label_tag "Cost $", nil, class: 'col-sm-2 control-label'%>
-    <div class='col-sm-10'>
-      <%= text_field_tag "Cost", nil, class: 'form-control'%>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag "Description", nil, class: 'col-sm-2 control-label'%>
-    <div class='col-sm-10'>
-      <%= text_field_tag "Description", nil, class: 'form-control'%>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag "Start Date", nil, class: "control-label" %>
-    <%= select_date Date.today, prefix: :start_date, class: 'form-control' %>
-    <%= label_tag "Start Time", nil, class: 'control-label' %>
-    <%= select_time Time.now, ampm: true, minute_step: 15, prefix: :start_time , class: 'form-control'%>
-  </div>
-
-
-  <div class="form-group">
-    <%= label_tag "End Date" %>
-    <%= select_date Date.today, prefix: :end_date %>
-    <%= label_tag "End Time"%>
-    <%= select_time Time.now, ampm:true, minute_step: 15, prefix: :end_time %>
-  </div>
-
-  </br>
-  
-    <%= submit_tag "Create", class: "btn btn-primary btn-lg" %>
-  </br>
-
-<% end %>
+  <% end %>
+</div>
