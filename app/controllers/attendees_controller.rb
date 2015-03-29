@@ -4,6 +4,7 @@ class AttendeesController < ApplicationController
 
   def create
     @invite_list = params["my-select"]
+
 		require 'mandrill'
 
 	@invite_list.each do |id|	
