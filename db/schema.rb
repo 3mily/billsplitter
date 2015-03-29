@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150328205154) do
 
   create_table "attendees", force: :cascade do |t|
     t.string  "email"
-    t.boolean "pre_auth?",  default: false
+    t.boolean "pre_auth?"
     t.integer "event_id"
     t.integer "contact_id"
   end
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150328205154) do
     t.string   "name"
     t.string   "location"
     t.integer  "cost"
-    t.boolean  "closed?",  default: false
+    t.boolean  "closed?"
     t.datetime "start"
     t.datetime "end"
     t.integer  "user_id"
