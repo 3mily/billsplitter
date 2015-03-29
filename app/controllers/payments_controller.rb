@@ -21,6 +21,8 @@ class PaymentsController < ApplicationController
 		# )
 
 		# Charge the Customer instead of the card
+
+		
 		charge = Stripe::Charge.create(
         :amount => 1000, #amount in cents
         :currency => "cad",
@@ -33,6 +35,8 @@ class PaymentsController < ApplicationController
 		# Save the customer ID in your database so you can use it later
 		# attendee.stripe_token = charge.id
 		# save_stripe_customer_id(user, customer.id)
+
+		# should save change attendee's payment status.
 
 		# Later...
 		# customer_id = get_stripe_customer_id(user)
