@@ -35,9 +35,9 @@ class EventsController < ApplicationController
     event.attendees.each do |attendee|
 
        if attendee.charge_id != nil
-
           charge = Stripe::Charge.retrieve(attendee.charge_id)
-          charge.capture  
+          charge.capture
+          paid_email(attendee)
       end
     end
 
@@ -55,6 +55,27 @@ class EventsController < ApplicationController
     @events = Event.all
     @closed = 0
     @open = 0
+  end
+
+  def paid_email(attendee)
+    binding.pry
+    attendee_name = attendee.contact.firstname
+    email_body = "<html>Hey <strong>"+attendee_name+"</strong>, we've received your payment of $"+attendee.event.cost.to_s+"! Thanks for paying your friend back! </html>"
+    m = Mandrill::API.new
+    message = {  
+     :subject=> "Hey "+attendee_name+", we've received your payment now!",
+     :from_name=> attendee.event.user.firstname,  
+     :text=>"Hello you!",  
+     :to=>[  
+       {  
+         :email=> "godutchteam@gmail.com", #should be r_email  
+         :name=> attendee_name 
+       }  
+     ],  
+     :html=>email_body,  
+     :from_email=>"godutchteam@gmail.com"  
+    }  
+    sending = m.messages.send message 
   end
 
 
