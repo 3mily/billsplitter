@@ -21,10 +21,17 @@ class EventsController < ApplicationController
     render :inviteform
   end
 
-def details
-  @events = Event.all
-  @closed = 0
-end
+  def update
+    event = Event.find(params['id'])
+    event.closed = true
+    event.save
+    render :details
+  end
+
+  def details
+    @events = Event.all
+    @closed = 0
+  end
 
 
 end
