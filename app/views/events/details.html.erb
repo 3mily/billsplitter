@@ -31,8 +31,8 @@
                 <td><i class="fa fa-map-marker"></i> <%= event.location %></td>
               </tr>
               <tr>
-                <td><i class="fa fa-money"></i> Total Cost (including self): $<%= (event.cost * event.attendees.count) + event.cost %></td>
-                <td><i class="fa fa-users"></i> People who've paid <%= event.has_paid?(event.id) %> /<%= event.attendees.count %></td>
+                <td><i class="fa fa-money"></i> Total Cost (including self): $<%= (event.cost * event.attendees.where(pre_auth:true).count) + event.cost %></td>
+                <td><i class="fa fa-users"></i> People who've paid: <%= event.has_paid?(event.id) %> /<%= event.attendees.count %></td>
               </tr>
             </table>
             <button class="close-event">Close Event, Collect Money!</button> 

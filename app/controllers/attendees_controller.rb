@@ -28,7 +28,7 @@ class AttendeesController < ApplicationController
 			 :text=>"Hi, how are you?",  
 			 :to=>[  
 			   {  
-			     :email=> "godutchteam@gmail.com", #should be r_email  
+			     :email=> r_email, 
 			     :name=> r_firstname  
 			   }  
 			 ],  
