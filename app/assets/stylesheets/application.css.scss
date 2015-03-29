@@ -18,6 +18,7 @@ body {
   background-color: $bg;
   margin: 0 auto;
   padding: 100px;
+  color: #333;
 }
 li a {
   color: #C7E1FF;
@@ -47,6 +48,16 @@ label {
 
 .form-input {
   max-width: 500px;
+  margin: 0 auto;
+}
+
+.pink {
+  color: $btn-success-hover;
+}
+
+.form-card {
+  max-width: 350px;
+  text-align: right;
   margin: 0 auto;
 }
 
@@ -84,8 +95,14 @@ label {
 
 .btn-primary {
   background-color: $btn-success;
+  margin: 5px;
 }
 .btn-primary:hover {
+  background-color: $btn-success-hover;
+}
+
+.btn-warning {
+  border: none;
   background-color: $btn-success-hover;
 }
 

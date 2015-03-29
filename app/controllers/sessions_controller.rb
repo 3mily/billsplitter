@@ -15,7 +15,6 @@ class SessionsController < ApplicationController
       render '/events/details'
     else
       flash[:alert] = "Login failed!"
-      binding.pry
     end
   end
 
