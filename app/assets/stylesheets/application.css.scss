@@ -45,6 +45,11 @@ label {
   margin-top: 10px;
 }
 
+.form-control {;
+  border-radius: 0;
+  border: none;
+  border-top: solid 3px #aaa;
+}
 
 .form-input {
   max-width: 500px;
@@ -98,6 +103,12 @@ label {
   margin: 5px;
 }
 .btn-primary:hover {
+  background-color: $btn-success-hover;
+}
+.btn-primary:active {
+  background-color: $btn-success-hover;
+}
+.btn-primary:focus {
   background-color: $btn-success-hover;
 }
 
