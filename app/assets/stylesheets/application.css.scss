@@ -87,10 +87,17 @@ label {
 }
 
 .front-container h1 {
-  font-size: 6em;
+  font-size: 6.5em;
 }
 .front-container h2 {
   color: #777;
+}
+
+.welcome-msg {
+  margin: 0 auto;
+  max-width: 250px;
+  padding: 5px;
+  color: #555;
 }
 
 .form-control {
@@ -192,13 +199,6 @@ label {
 
 .hidden {
   display: none;
-}
-
-.welcome-msg {
-  margin: 0 auto;
-  max-width: 250px;
-  padding: 5px;
-  color: #555;
 }
 
 .pink {
