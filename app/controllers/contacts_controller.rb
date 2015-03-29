@@ -11,9 +11,9 @@ class ContactsController < ApplicationController
 	    @contact.email = params["email"]
 	    @contact.user_id = current_user.id
 	    @contact.save
-	    binding.pry
+	    @contacts = Contact.all
 	    # something to add to 
-	    response.headers['X-PJAX-URL'] = "http://localhost:3000/events/invite"
-      	render '/events/invite'
+	    # response.headers['X-PJAX-URL'] = "http://localhost:3000/events/invite"
+      	render 'events/inviteform'
 	end 
 end
