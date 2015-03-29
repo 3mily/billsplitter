@@ -30,21 +30,42 @@ li a:hover {
 label {
   font-size: 1.2em;
 }
-table {
+.payment-form table {
   width: 400px;
   margin: 0 auto;
   font-size: 1.2em;
   background-color: rgba(250, 250, 250, 0.7);
   border-bottom: solid 3px #aaa;
 }
-table tr > :first-child {
+.payment-form table tr > :first-child {
   padding: 10px;
   text-align: left;
   font-weight: bold;
 }
-table tr > :nth-child(2) {
+.payment-form table tr > :nth-child(2) {
   padding: 10px;
   text-align: right;
+}
+
+.one-event table{
+  text-align: left;
+  margin: 0 auto;
+}
+.one-event td {
+  width: 220px;
+  padding: 1px 5px 3px 5px;
+}
+
+.close-event {
+  padding: 5px;
+  margin: 5px;
+  border: none;
+  border-bottom: solid 2px #aaa;
+  background-color: #fff
+}
+.close-event:hover {
+  border-bottom: solid 2px #aaa;
+  background-color: #dedede
 }
 
 .container {
@@ -59,6 +80,10 @@ table tr > :nth-child(2) {
   max-width: 800px;
   margin: 0 auto;
   margin-top: 10px;
+}
+
+.front-container {
+  font-size: 6em;
 }
 
 .form-control {;
@@ -126,6 +151,7 @@ table tr > :nth-child(2) {
 }
 .btn-primary:hover {
   background-color: $btn-success-hover;
+  border-bottom: solid 3px #6E5959;
 }
 .btn-primary:active {
   background-color: $btn-success-hover;
@@ -137,6 +163,24 @@ table tr > :nth-child(2) {
 .btn-warning {
   border: none;
   background-color: $btn-success-hover;
+}
+
+.btn-success {
+  margin: 5px;
+  width: 200px;
+  background-color: $btn-success;
+}
+.btn-success:hover {
+  background-color: $btn-success-hover;
+  border-bottom: solid 3px $dk-grey;
+}
+.btn-success:active {
+  background-color: $btn-success-hover;
+  border-bottom: solid 3px $dk-grey;
+}
+.btn-success:focus {
+  background-color: $btn-success-hover;
+  border-bottom: solid 3px $dk-grey;
 }
 
 .hidden {
@@ -152,6 +196,10 @@ table tr > :nth-child(2) {
   padding-bottom: 50px;
 }
 
+#right {
+  float: right;
+  margin-top: -10px;
+}
 
 
 @media only screen {

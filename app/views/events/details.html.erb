@@ -24,10 +24,19 @@
         <% if !event.closed? %>
           <% @open += 1 %>
           <div class="one-event" data-event-id="<%=event.id%>">
-            <p>
-            <h4><strong><%= event.name %></strong></h4> | <%= event.location %> | <button class="close-event">Close Event, Collect Money!</button> <span class='removable'> | </span><i class="fa fa-close"></i><br>
-            <p>Total Cost (including self): $<%= (event.cost * event.attendees.count) + event.cost %> | People who've paid <%= event.has_paid?(event.id) %> /<%= event.attendees.count %></p> 
-            </p>
+            <h4><strong><%= event.name %></strong><i class="fa fa-close" id="right"></i></h4>
+            <table>
+              <tr>
+                <td><i class="fa fa-clock-o"></i> <%= event.start.strftime("%B %d, %Y at %l:%M%p") %></td>
+                <td><i class="fa fa-map-marker"></i> <%= event.location %></td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-money"></i> Total Cost (including self): $<%= (event.cost * event.attendees.count) + event.cost %></td>
+                <td><i class="fa fa-users"></i> People who've paid <%= event.has_paid?(event.id) %> /<%= event.attendees.count %></td>
+              </tr>
+            </table>
+            <button class="close-event">Close Event, Collect Money!</button> 
+              <!-- <span class='removable'> | </span> -->
           </div>
         <% else %>
         <% end %>

@@ -1,8 +1,15 @@
 <% if current_user %>
 	
-  <h1>Hi <%= current_user.firstname%></h1>
-  <%=link_to 'Dashboard', events_details_path %><br>
-  <%= link_to 'Create New Event', new_event_path %>
+<div class='front-container'>
+Hi there
+</div>
+
+
+  <h4>Welcome back, <strong><%= current_user.firstname%>!</strong></h4>
+  <%=link_to 'Hit up your Dashboard', events_details_path, class: "btn btn-success btn-lg" %>
+  <%= link_to 'Create New Event', new_event_path, class: "btn btn-success btn-lg"  %>
 <% else %> 
 	<%= render 'login' %>
 <% end %>
+
+

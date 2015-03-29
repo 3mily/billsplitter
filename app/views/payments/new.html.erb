@@ -3,25 +3,26 @@
 
   <h1><strong>Hi, <%= @attendee.contact.firstname %>! <i class="fa fa-smile-o"></i></strong></h1>
   <h3><strong><%= @attendee.contact.user.firstname %> <%= @attendee.contact.user.lastname %></strong> has invited you to <strong><em><%= @event.name %></em></strong>.</h2><br>
-
-  <table>
-    <tr>
-      <td>Where:</td>
-      <td><%= @event.location %></td>    
-    </tr>
-    <tr>
-      <td>When:</td>
-      <td><%= @event.start.strftime("%B %d, %Y at %l:%M%p") %></td>    
-    </tr>
-    <tr>
-      <td>Cost per person:</td>
-      <td>$<%= @event.cost %></td>    
-    </tr>
-    <tr>
-      <td>Description:</td>
-      <td><%= @event.details %></td>    
-    </tr>
-  </table>  
+  <div class='payment-form'>  
+    <table>
+      <tr>
+        <td>Where:</td>
+        <td><%= @event.location %></td>    
+      </tr>
+      <tr>
+        <td>When:</td>
+        <td><%= @event.start.strftime("%B %d, %Y at %l:%M%p") %></td>    
+      </tr>
+      <tr>
+        <td>Cost per person:</td>
+        <td>$<%= @event.cost %></td>    
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td><%= @event.details %></td>    
+      </tr>
+    </table>  
+  </div>
   <hr>
 
   <p>To confirm your attendance, please pre-authorize your credit card below.<br>
