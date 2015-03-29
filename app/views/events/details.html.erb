@@ -14,7 +14,7 @@
       </span>
       <a class="btn btn-warning"></a>
     </label>
-  </div>
+  </div><br>
 
   <% if @events %>
 
@@ -25,7 +25,7 @@
           <% @open += 1 %>
           <div class="one-event" data-event-id="<%=event.id%>">
             <p>
-            <strong><%= event.name %></strong> | <%= event.location %> <button class="close-event"> | Close Event, Collect Money!</button> | <i class="fa fa-close"></i><br>
+            <h4><strong><%= event.name %></strong></h4> | <%= event.location %> <button class="close-event"> | Close Event, Collect Money!</button> | <i class="fa fa-close"></i><br>
             <%= event.cost %>
             </p>
           </div>
