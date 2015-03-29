@@ -6,21 +6,23 @@ class EventsController < ApplicationController
 
   def create
     @contacts = Contact.all
+
     @event = Event.new
-    s_hour = params["start_time"]["hour"]
-    s_minute = params["start_time"]["minute"]
-    s_time = s_hour + ":" + "s_minute"
-    e_hour = params["end_time"]["hour"]
-    e_minute = params["end_time"]["minute"]
-    e_time = e_hour + ":" + "e_minute"
+    start_time = @event.format_datetime(params["start_date"],params["start_time"])
+    binding.pry
+    end_time = @event.format_datetime(params["end_date"],params["end_time"])
     @event.name = params["Name"]
     @event.location = params["Location"]
     @event.cost = params["Cost"]
-    @event.start = s_time
-    @event.end = e_time
-
+    @event.start = start_time
+    @event.end = end_time
     @event.save
+    binding.pry
     response.headers['X-PJAX-URL'] = "http://localhost:3000/events/invite"
     render :inviteform
   end
+
+
+
+
 end
