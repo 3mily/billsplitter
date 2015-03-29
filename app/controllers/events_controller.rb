@@ -55,17 +55,20 @@ class EventsController < ApplicationController
   end
 
   def paid_email(attendee)
-    attendee_name = attendee.contact.firstname
-    email_body = "<html>Hey <strong>"+attendee_name+"</strong>, we've received your payment of $"+attendee.event.cost.to_s+"! Thanks for paying your friend back! </html>"
+    email_body = "<html><head><style>#content{height: 100%}#invite{background-color: #81B7FF;padding: 30px;text-align: center;}h1{color: white;font-family: arial}
+                #message {position: relative;text-align: center;font-family: arial;padding-bottom: 100px}a {text-decoration: none;color: white;font-family: arial;}
+                #link {background-color: #81B7FF;padding: 10px;width: 50px; margin: 0 auto;}#link:hover {background-color: black;} p{font-size: 20px;}</style></head>
+              <body><div id='content'><div id='invite'><h1>Hey <strong>"+attendee.contact.firstname+"!</strong></h1></div><div id='message'><p>We're received your payment of $<strong>"+attendee.event.cost.to_s+"</strong> for <strong>"+attendee.event.name+"</strong>.<br>Thanks for paying your friend back!</div></div></body>"
+
     m = Mandrill::API.new
     message = {  
-     :subject=> "Hey "+attendee_name+", we've received your payment now!",
+     :subject=> "Hey "+attendee.contact.firstname+", we've received your payment now!",
      :from_name=> attendee.event.user.firstname,  
      :text=>"Hello you!",  
      :to=>[  
        {  
-         :email=> "godutchteam@gmail.com", #should be r_email  
-         :name=> attendee_name 
+         :email=> attendee.email, #should be r_email  
+         :name=> attendee.contact.firstname
        }  
      ],  
      :html=>email_body,  

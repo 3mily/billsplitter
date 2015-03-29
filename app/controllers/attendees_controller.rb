@@ -19,7 +19,7 @@ class AttendeesController < ApplicationController
 				email_body = "<html><head><style>#content{height: 100%}#invite{background-color: #81B7FF;padding: 30px;text-align: center;}h1{color: white;font-family: arial}
 	    					#message {position: relative;text-align: center;font-family: arial;padding-bottom: 100px}a {text-decoration: none;color: white;font-family: arial;}
     						#link {background-color: #81B7FF;padding: 10px;width: 50px; margin: 0 auto;}#link:hover {background-color: black;} p{font-size: 20px;}</style></head>
-							<body><div id='content'><div id='invite'><h1> You're Invited! </h1></div><div id='message'><p> Hello, <strong>"+attendee.contact.firstname+"</strong><p><br><p><strong> "+current_user.firstname+"</strong> has invited you to <strong>"+attendee.event.name+" </strong>	via GoDutch. <p><br><p> To RSVP and pre-authorize payment for your admission, follow the link below. </p><div id='link'><a href='http://localhost:3000/payments/new/"+attendee_id+"'>RSVP</a></div></div><hr></div></body>"
+							<body><div id='content'><div id='invite'><h1> You're Invited! </h1></div><div id='message'><p> Hey, <strong>"+attendee.contact.firstname+"!</strong><p><br><p><strong> "+current_user.firstname+" "+current_user.lastname+"</strong> has invited you to <strong>"+attendee.event.name+" </strong>	via GoDutch. <p><br><p> To RSVP and pre-authorize payment for your admission, follow the link below. </p><div id='link'><a href='http://localhost:3000/payments/new/"+attendee_id+"'>RSVP</a></div></div><hr></div></body>"
 
 	    m = Mandrill::API.new
 			message = {  
