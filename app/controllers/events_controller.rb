@@ -26,16 +26,19 @@ class EventsController < ApplicationController
     event = Event.find(params['id'])
     event.closed = true
     event.save
-    binding.pry
-    
+
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
     event.attendees.each do |attendee|
+      binding.pry
        if attendee.charge_id != nil
+        binding.pry
           charge = Stripe::Charge.retrieve(attendee.charge_id)
           charge.capture  
       end
     end
+
+
 
     render :details
 
@@ -44,6 +47,7 @@ class EventsController < ApplicationController
   def details
     @events = Event.all
     @closed = 0
+    @open = 0
   end
 
 

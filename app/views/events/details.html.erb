@@ -16,6 +16,7 @@
 
     <% @events.each do |event| %>
       <% if !event.closed? %>
+        <% @open += 1 %>
         <div class="one-event" data-event-id="<%=event.id%>">
           <p>
           <strong><%= event.name %></strong> | <%= event.location %> | <button class="close-event">Close Event, Collect Money!</button> | <i class="fa fa-close"></i><br>
@@ -23,8 +24,10 @@
           </p>
         </div>
       <% else %>
-        <p>No current events.</p>
       <% end %>
+    <% end %>
+    <% if @open == 0 %>
+      <p>No Current Events</p>
     <% end %>
   </div>
 
