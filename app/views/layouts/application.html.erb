@@ -12,9 +12,11 @@
   <%= csrf_meta_tags %>
 
 </head>
-<body>
+<body background="http://cdn.desktopwallpapers4.me/wallpapers/world/1680x1050/2/16764-windmills-in-the-netherlands-1680x1050-world-wallpaper.jpg">
+<div id="header">
   <%= render 'layouts/header' %>
-  <div id="pjax-container">
+</div>
+  <div id="pjax-container" class= "jumbotron">
     <%= yield %>
   </div>
 </body>

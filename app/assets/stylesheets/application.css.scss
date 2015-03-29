@@ -2,6 +2,19 @@
 @import "font-awesome";
 @import "bootstrap.min";
 
+#header{
+  padding-bottom: 50px;
+}
+
+.dutch-nav {
+  padding: 5px;
+  margin-top: -100px;
+  border: none;
+  border-radius: 0;
+  li {
+    font-size: 1.2em;
+  }
+}
 
 .btn {
   -webkit-border-radius: 0px;
@@ -14,8 +27,6 @@
 .hidden {
   display: none;
 }
-
-
 
 @media only screen {
   .switch-light-container {
