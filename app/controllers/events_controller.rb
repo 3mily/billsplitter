@@ -38,10 +38,14 @@ class EventsController < ApplicationController
       end
     end
 
-
-
     render :details
 
+  end
+
+  def destroy
+    event = Event.find(params['id'])
+    event.destroy
+    render :details
   end
 
   def details

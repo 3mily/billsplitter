@@ -35,9 +35,9 @@
     <% @events.each do |event| %>
       <% if event.closed? %>
         <% @closed += 1 %>
-        <div>
+        <div class="one-event" data-event-id="<%=event.id%>">
           <p>
-          <strong><%= event.name %></strong> | <%= event.location %><br>
+          <strong><%= event.name %></strong> | <%= event.location %> | <i class="fa fa-close"></i><br>
           <%= event.cost %>
           </p>
         </div>
