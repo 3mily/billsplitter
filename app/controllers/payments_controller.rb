@@ -4,14 +4,11 @@ class PaymentsController < ApplicationController
 
 	def new
 		puts "NEW WAS CALLED"
-		attendee_id = params["id"]
-		attendee = Contact.find(id = attendee_id)
-		@contact_firstname = attendee.firstname
-		@user_id = attendee.user_id
-		event = Event.find(user_id = @user_id)
-		@event_name = event.name
-		@cost = event.cost
-		binding.pry
+		attendee_id = params["id"].to_i
+		@attendee = Attendee.find(attendee_id)
+		# binding.pry
+		@event = Event.find(@attendee.event.id)
+		# binding.pry
 
 		# get cost from event - convert it to cents
 		# @event = @attendee.event_id
@@ -34,13 +31,18 @@ class PaymentsController < ApplicationController
 
 		
 		charge = Stripe::Charge.create(
-        :amount => 100,
+        :amount => 100, # total_cost
         :currency => "cad",
         :card => token,
         :description => "description of payment",
 		    :capture => false
 		    )
     charge.save
+    binding.pry
+    attendee = Attendee.find(params["id"].to_i)
+    attendee.charge_id = charge.id
+    attendee.save
+
 
 		# Save the customer ID in your database so you can use it later
 		# attendee.stripe_token = charge.id

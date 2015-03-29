@@ -1,24 +1,25 @@
 require 'pry'
+require 'mandrill'
 
 class AttendeesController < ApplicationController
 
   def create
+  	@event = current_user.events.last
     @invite_list = params["my-select"]
-
-		require 'mandrill'
-
-
 
 		@invite_list.each do |id|	
 			invitee = Contact.find(user_id = id)
 			r_email = invitee.email
 			r_firstname = invitee.firstname
-			email_body = "<html><h1>Hi <strong>message</strong>, how are you?</h1><p> You've been invited to an event on Go Dutch! Follow the link here to participate: localhost:3000/payments/new/"+id+"<p></html>"
+			attendee = Attendee.create(email: invitee.email, contact_id: invitee.id, event_id: @event.id );
+			attendee_id = attendee.id.to_s
+
+			email_body = "<html><h1>Hey <strong>"+attendee.contact.firstname+"</strong>, how are you?</h1><p> You've been invited by <strong>"+current_user.firstname+"</strong> to the event <strong>"+attendee.event.name+"</strong> on Go Dutch! <a href='http://localhost:3000/payments/new/"+attendee_id+"'>Follow this link to participate!</a><p></html>"
 
 
 	    m = Mandrill::API.new
 			message = {  
-			 :subject=> "Hello, "+r_firstname,  
+			 :subject=> "Hey "+r_firstname+", wanna go to "+attendee.event.name+"?",  
 			 :from_name=> "Your name",  
 			 :text=>"Hi message, how are you?",  
 			 :to=>[  
