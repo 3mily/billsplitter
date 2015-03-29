@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   get '/events/details', to: 'events#details', as: 'events_details'
   get '/events/confirmation', to: 'events#confirmation', as: 'attendeesconfirm'
   get '/events/invite', to: 'static#error', as: 'wrong_way'
+  post 'payments/new', to: 'payments#create', as: 'new_payment'
   resources :users, only: [:create, :update, :destroy]
   resource :session, only: [:new, :create, :destroy]
   resources :events, only: [:new, :create, :update, :destroy]
   resources :cards, only: [:create, :destroy]
-  resources :payments
+  resources :payments, only: [:new, :create]
   resources :attendees, only: [:create]
   resources :contacts, only: [:create, :update, :destroy]
 
