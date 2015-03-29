@@ -21,6 +21,8 @@ class PaymentsController < ApplicationController
 		# )
 
 		# Charge the Customer instead of the card
+
+		
 		charge = Stripe::Charge.create(
         :amount => 1000, #amount in cents
         :currency => "cad",
