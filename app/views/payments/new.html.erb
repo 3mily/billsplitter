@@ -1,6 +1,12 @@
 
 <hr>
-
+<% if @contact_firstname %>
+  <h1> Hi, <%= @contact_firstname %> </h1>
+  <p> Pre-Authorize your payment for <%= @event_name %> below: </p>
+<% else %>
+  <h1> Hello! </h1>
+  <p> Pre-authorize your payment below </p>
+<% end %>
 <form action="" method="POST" id="payment-form">
   <span class="payment-errors"></span>
   <div class="form-row">

@@ -3,7 +3,17 @@ require 'pry'
 class PaymentsController < ApplicationController
 
 	def new
-		# @attendee = (get ID from URL)
+		puts "NEW WAS CALLED"
+		attendee_id = params["id"]
+		attendee = Contact.find(id = attendee_id)
+		@contact_firstname = attendee.firstname
+		@user_id = attendee.user_id
+		event = Event.find(user_id = @user_id)
+		@event_name = event.name
+		@cost = event.cost
+		binding.pry
+
+		# get cost from event - convert it to cents
 		# @event = @attendee.event_id
 		# @stripe_key = @event.user_id.stripe_key
 	end
@@ -24,7 +34,7 @@ class PaymentsController < ApplicationController
 
 		
 		charge = Stripe::Charge.create(
-        :amount => 1000, #amount in cents
+        :amount => 100,
         :currency => "cad",
         :card => token,
         :description => "description of payment",
