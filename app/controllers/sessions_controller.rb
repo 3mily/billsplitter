@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
 
+  def new
+    
+  end
+
   def create
     user = User.find_by(email: params[:email])
 
@@ -17,7 +21,8 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    # render login.
+    response.headers['X-PJAX-URL'] = "http://localhost:3000/"
+    render :new
   end
 
 end

@@ -7,4 +7,8 @@ class StaticController < ApplicationController
   # def contacts 
   # 	@contacts = Contacts.all
   # end 
+
+  def about
+    
+  end
 end

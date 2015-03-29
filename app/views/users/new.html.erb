@@ -1,0 +1,25 @@
+<%= form_tag users_path do %>
+  <div>
+    <%= label_tag "firstname", "First Name" %><br>
+    <%= text_field_tag "firstname" %>
+  </div>
+  <div>
+    <%= label_tag "lastname", "Last Name" %><br>
+    <%= text_field_tag "lastname" %>
+  </div>
+  <div>
+    <%= label_tag "email", "Email" %><br>
+    <%= text_field_tag "email" %>
+  </div>
+  <div>
+    <%= label_tag "password" %><br>
+    <%= password_field_tag "password" %>
+  </div>
+  <div>
+    <%= label_tag "password_confirmation" %><br>
+    <%= password_field_tag "password_confirmation" %>
+  </div>
+  <br>
+  <div><%= submit_tag "Create account" %></div>
+  
+<% end %>
