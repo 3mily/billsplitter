@@ -1,8 +1,14 @@
 <div class="nav-bar dutch-nav">
 	<%= link_to image_tag('logo.png'), '/', class: 'logo pull-left' %>
 	<ul class="nav navbar-nav navbar-right">
-		<li class="btn-success"> <%= link_to "profile" %> </li>
-		<li class="btn-success"> <%= link_to "create new event" %> </li>
-		<li class="btn-success"> <%= link_to "about" %> </li>
+
+    <li class="btn-success"> <%= link_to "Dashboard", events_details_path%> </li>
+    <li class="btn-success"> <%= link_to "Create New Event", new_event_path %> </li>
+    <li class="btn-success"> <%= link_to "About", about_path %> </li>
+    <% if current_user %>
+    <li class="btn-success log-out"> <%= link_to "Log Out", logout_path %> </li>
+    <% else %>
+    <li class="btn-success log-out" style='display:none'> <%= link_to "Log Out", logout_path %> </li>
+    <% end %>
 	</ul>
 </div>
