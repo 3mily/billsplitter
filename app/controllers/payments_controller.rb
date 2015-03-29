@@ -34,6 +34,8 @@ class PaymentsController < ApplicationController
 		# attendee.stripe_token = charge.id
 		# save_stripe_customer_id(user, customer.id)
 
+		# should save change attendee's payment status.
+
 		# Later...
 		# customer_id = get_stripe_customer_id(user)
 

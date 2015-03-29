@@ -33,7 +33,7 @@ class EventsController < ApplicationController
     end
 
     @event.closed? = true
-    @event.save!
+    @event.save!  
   end
 
 
