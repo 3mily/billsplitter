@@ -22,14 +22,13 @@ function updateEvent(id, currentEvent){
       console.log("it didnt save or work or something oh noes", thrownError);
     },
     success: function(response){
-      debugger;
       console.log("success event updated");
       closedEvent = currentEvent.parents('.one-event');
       closedEvent.remove();
       $('#past-events').append(closedEvent);
-      debugger;
       $('#past-events').children('#no-past').remove();
       closedEvent.children('p').children('.close-event').remove();
+      closedEvent.children('p').children('.removable').remove();
     }
   });  
 }
