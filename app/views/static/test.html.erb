@@ -7,7 +7,7 @@ Just go dutch!</h2>
 </div>
 
 
-  <h4>Welcome back, <strong><%= current_user.firstname%>!</strong></h4>
+  <div class='welcome-msg'><h4>Welcome back, <strong><%= current_user.firstname%>! <i class="fa fa-smile-o"></i></strong></h4></div>
   <%=link_to 'Hit up your Dashboard', events_details_path, class: "btn btn-success btn-lg" %>
   <%= link_to 'Create New Event', new_event_path, class: "btn btn-success btn-lg"  %>
 <% else %> 
