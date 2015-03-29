@@ -4,7 +4,8 @@
 <%= form_tag events_path, id: 'events-pjax' , class: "form-horizontal" do %>
 
 
-  <h1>Create an Event</h1>
+  <h1><i class="fa fa-calendar"></i> Create an Event</h1>
+  <p>Decide upon an event - we'll later choose whom to invite!</p>
   <div class="form-group">
     <%= label_tag "Name", nil, class: 'col-sm-2 control-label' %> 
     <div class="col-sm-10">
@@ -27,6 +28,13 @@
   </div>
 
   <div class="form-group">
+    <%= label_tag "Description", nil, class: 'col-sm-2 control-label'%>
+    <div class='col-sm-10'>
+      <%= text_field_tag "Description", nil, class: 'form-control'%>
+    </div>
+  </div>
+
+  <div class="form-group">
     <%= label_tag "Start Date", nil, class: "control-label" %>
     <%= select_date Date.today, prefix: :start_date, class: 'form-control' %>
     <%= label_tag "Start Time", nil, class: 'control-label' %>
@@ -35,7 +43,7 @@
 
 
   <div class="form-group">
-    <%= label_tag "End Date"%>
+    <%= label_tag "End Date" %>
     <%= select_date Date.today, prefix: :end_date %>
     <%= label_tag "End Time"%>
     <%= select_time Time.now, ampm:true, minute_step: 15, prefix: :end_time %>
@@ -43,7 +51,7 @@
 
   </br>
   
-    <%= submit_tag "Create Event", class: "pure-button pure-button-primary submit-button" %>
+    <%= submit_tag "Create", class: "btn btn-primary btn-lg" %>
   </br>
 
 <% end %>

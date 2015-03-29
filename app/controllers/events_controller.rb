@@ -15,6 +15,7 @@ class EventsController < ApplicationController
     @event.name = params["Name"]
     @event.location = params["Location"]
     @event.cost = params["Cost"]
+    @event.details = params["Description"]
     @event.start = start_time
     @event.end = end_time
     @event.user_id = current_user.id
