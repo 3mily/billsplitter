@@ -9,7 +9,7 @@ class PaymentsController < ApplicationController
 	end
 
 	def create
-		Stripe.api_key = "sk_test_ZJqIzHaMdB2YUxDVXHYJkjnU"
+		Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
 		# Get the credit card details submitted by the form
 		token = params[:stripeToken]
@@ -31,17 +31,19 @@ class PaymentsController < ApplicationController
     charge.save
 
 		# Save the customer ID in your database so you can use it later
-		attendee.stripe_token = charge.id
-		save_stripe_customer_id(user, customer.id)
+		# attendee.stripe_token = charge.id
+		# save_stripe_customer_id(user, customer.id)
 
 		# Later...
-		customer_id = get_stripe_customer_id(user)
+		# customer_id = get_stripe_customer_id(user)
 
-		Stripe::Charge.create(
-		  :amount   => 1500, # $15.00 this time
-		  :currency => "cad",
-		  :customer => customer_id
-		)
+		# Stripe::Charge.create(
+		#   :amount   => 1500, # $15.00 this time
+		#   :currency => "cad",
+		#   :customer => customer_id
+		# )
+
+		render :create
 	end
 
 

@@ -20,7 +20,21 @@ class EventsController < ApplicationController
     render :inviteform
   end
 
+  def update
+    @event = Event.find(params[:event_id])
 
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+    @event.attendees.each do |attendee|
+       if attendee.charge_id != nil
+          charge = Stripe::Charge.retrieve(attendee.charge_id)
+          charge.capture  
+      end
+    end
+
+    @event.closed? = true
+    @event.save!
+  end
 
 
 end

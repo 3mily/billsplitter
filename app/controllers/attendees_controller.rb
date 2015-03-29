@@ -5,6 +5,7 @@ class AttendeesController < ApplicationController
   def create
 
   	@invite_list = params["my-select"]
+  	
 
   	binding.pry
 
