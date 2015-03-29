@@ -1,15 +1,18 @@
+
 <% content_for :title do %>
   Log In
 <% end %> 
-<%= form_tag session_path, id: 'login-pjax' do %>
-  <div>
-    <%= label_tag "email" %><br>
-    <%= text_field_tag "email", nil %>
+<%= form_tag session_path, id: 'login-pjax'  do %>
+  <div class="form-group">
+    <%= label_tag "email"  %>
+    <%= text_field_tag "email", nil, class: 'form-control' %>
   </div>
-  <div>
-    <%= label_tag :password %><br>
-    <%= password_field_tag :password, nil %>
+  <div class="form-group">
+    <%= label_tag :password %>
+    <%= password_field_tag :password, nil, class: 'form-control' %>
   </div>
-  <br>
-  <div><%= submit_tag "Log In" %></div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 <% end %>
+
+
+

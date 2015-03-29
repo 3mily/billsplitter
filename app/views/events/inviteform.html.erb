@@ -1,6 +1,8 @@
 <h1>Invite from your contact list</h1>
+
 <title>Invite Contacts</title>
 <%= form_tag attendees_path, id: 'invite-pjax' do %>
+
   <div>
     <%= label_tag "Contacts to invite:"%><br>
       <select multiple="multiple" id="my-select" name="my-select[]">
@@ -11,9 +13,7 @@
   	  <select multiple="multiple" id="selected" name="my-select[]">
   	  </select>
   </div>
-    
-
-<div><%= submit_tag "Submit" %></div>    
+<div><button type= "Submit">Submit</button></div>    
 <% end %>
 
 
