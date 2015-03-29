@@ -15,12 +15,16 @@ class EventsController < ApplicationController
     @event.cost = params["Cost"]
     @event.start = start_time
     @event.end = end_time
+    @event.user_id = current_user.id
     @event.save
     response.headers['X-PJAX-URL'] = "http://localhost:3000/events/invite"
     render :inviteform
   end
 
-
+def details
+  @events = Event.all
+  @closed = 0
+end
 
 
 end
