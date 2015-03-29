@@ -16,15 +16,18 @@
 
     <% @events.each do |event| %>
       <% if !event.closed? %>
+        <% @open += 1 %>
         <div class="one-event" data-event-id="<%=event.id%>">
           <p>
-          <strong><%= event.name %></strong> | <%= event.location %> | <button class="close-event">Close Event, Collect Money!</button> | <i class="fa fa-close"></i><br>
+          <strong><%= event.name %></strong> | <%= event.location %> <button class="close-event"> | Close Event, Collect Money!</button> | <i class="fa fa-close"></i><br>
           <%= event.cost %>
           </p>
         </div>
       <% else %>
-        <p>No current events.</p>
       <% end %>
+    <% end %>
+    <% if @open == 0 %>
+      <p>No Current Events</p>
     <% end %>
   </div>
 
@@ -32,9 +35,9 @@
     <% @events.each do |event| %>
       <% if event.closed? %>
         <% @closed += 1 %>
-        <div>
+        <div class="one-event" data-event-id="<%=event.id%>">
           <p>
-          <strong><%= event.name %></strong> | <%= event.location %><br>
+          <strong><%= event.name %></strong> | <%= event.location %> | <i class="fa fa-close"></i><br>
           <%= event.cost %>
           </p>
         </div>
@@ -42,7 +45,7 @@
       <% end %>
     <% end %>
     <% if @closed == 0 %>
-      <p>No Past Events Yet!</p>
+      <p id="no-past">No Past Events Yet!</p>
     <% end %> 
   </div>
 
