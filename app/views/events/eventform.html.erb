@@ -36,18 +36,10 @@
       </div>
 
       <div class="form-group">
-        <%= label_tag "Start Date", nil, class: "control-label" %>
+        <%= label_tag "Date", nil, class: "control-label" %>
         <%= select_date Date.today, prefix: :start_date, class: 'form-control' %>
         <%= label_tag "Start Time", nil, class: 'control-label' %>
         <%= select_time Time.now, ampm: true, minute_step: 15, prefix: :start_time , class: 'form-control'%>
-      </div>
-
-
-      <div class="form-group">
-        <%= label_tag "End Date" %>
-        <%= select_date Date.today, prefix: :end_date %>
-        <%= label_tag "End Time"%>
-        <%= select_time Time.now, ampm:true, minute_step: 15, prefix: :end_time %>
       </div>
     </div>
 

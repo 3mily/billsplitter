@@ -2,15 +2,34 @@
   <title>Card pre-authorization</title>
 
   <h1><strong>Hi, <%= @attendee.contact.firstname %>! <i class="fa fa-smile-o"></i></strong></h1>
-  <h2><%= @attendee.contact.user.firstname %> has invited you to <%= @event.name %> at <%= @event.location %>.<br>
-  The cost to attend this is $<%= @event.cost %>.</h2>
+  <h3><strong><%= @attendee.contact.user.firstname %> <%= @attendee.contact.user.lastname %></strong> has invited you to <strong><em><%= @event.name %></em></strong>.</h2><br>
+
+  <table>
+    <tr>
+      <td>Where:</td>
+      <td><%= @event.location %></td>    
+    </tr>
+    <tr>
+      <td>When:</td>
+      <td><%= @event.start.strftime("%B %d, %Y at %l:%M%p") %></td>    
+    </tr>
+    <tr>
+      <td>Cost per person:</td>
+      <td>$<%= @event.cost %></td>    
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td><%= @event.details %></td>    
+    </tr>
+  </table>  
+  <hr>
+
   <p>To confirm your attendance, please pre-authorize your credit card below.<br>
   You will only be charged when <%= @attendee.contact.user.firstname %> purchases your ticket on behalf of you.</p> 
 
-  <hr>
   <form action="" method="POST" id="payment-form">
   <div class="form-card">
-    <span class="payment-errors"></span>
+    <span class="payment-errors pink"></span>
     <div class="form-row">
       <label>
         <span>Credit Card Number</span>

@@ -30,6 +30,22 @@ li a:hover {
 label {
   font-size: 1.2em;
 }
+table {
+  width: 400px;
+  margin: 0 auto;
+  font-size: 1.2em;
+  background-color: rgba(250, 250, 250, 0.7);
+  border-bottom: solid 3px #aaa;
+}
+table tr > :first-child {
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+}
+table tr > :nth-child(2) {
+  padding: 10px;
+  text-align: right;
+}
 
 .container {
   margin: 0 auto;
