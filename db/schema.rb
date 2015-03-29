@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328205154) do
+ActiveRecord::Schema.define(version: 20150329001239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150328205154) do
     t.boolean "pre_auth?"
     t.integer "event_id"
     t.integer "contact_id"
+    t.string  "charge_id"
   end
 
   add_index "attendees", ["contact_id"], name: "index_attendees_on_contact_id", using: :btree

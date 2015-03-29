@@ -9,7 +9,6 @@ class EventsController < ApplicationController
 
     @event = Event.new
     start_time = @event.format_datetime(params["start_date"],params["start_time"])
-    binding.pry
     end_time = @event.format_datetime(params["end_date"],params["end_time"])
     @event.name = params["Name"]
     @event.location = params["Location"]
@@ -17,7 +16,6 @@ class EventsController < ApplicationController
     @event.start = start_time
     @event.end = end_time
     @event.save
-    binding.pry
     response.headers['X-PJAX-URL'] = "http://localhost:3000/events/invite"
     render :inviteform
   end
