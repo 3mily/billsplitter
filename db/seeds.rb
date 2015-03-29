@@ -12,6 +12,6 @@ contact1 = Contact.create(email: "godutchteam@gmail.com", firstname: "Emily", la
 contact2 = Contact.create(email: "godutchteam@gmail.com", firstname: "Gabby", lastname: "Leung", user_id: 1);
 contact3 = Contact.create(email: "godutchteam@gmail.com", firstname: "Maggie", lastname: "Moss", user_id: 1);
 
-User.create(firstname: 'Gabby', lastname: 'Leung', email: 'godutchteam@gmail.com', password: '123')
-User.create(firstname: 'Emily', lastname: 'Craig', email: 'godutchteam@gmail.com', password: '123')
-User.create(firstname: 'Maggie', lastname: 'Moss', email: 'godutchteam@gmail.com', password: '123')
+User.create(firstname: 'Gabby', lastname: 'Leung', email: 'godutchteam1@gmail.com', password: '123')
+User.create(firstname: 'Emily', lastname: 'Craig', email: 'godutchteam2@gmail.com', password: '123')
+User.create(firstname: 'Maggie', lastname: 'Moss', email: 'godutchteam3@gmail.com', password: '123')
