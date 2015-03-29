@@ -1,6 +1,6 @@
 <h1> Hi, <%= @attendee.contact.firstname %> </h1>
 <h2><%= @attendee.contact.user.firstname %> has invited you to <%= @event.name %> at <%= @event.location %>.</h2>
-<h2>The cost to attend this is <%= @event.cost %>.</h2>
+<h2>The cost to attend this is $<%= @event.cost %>.</h2>
 <p>To confirm your attendance, please pre-authorize your credit card below.</p>
 <p>You will only be charged when <%= @attendee.contact.user.firstname %> purchases your ticket.</p> 
 

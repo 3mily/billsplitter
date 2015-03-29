@@ -21,25 +21,22 @@ class PaymentsController < ApplicationController
 		# Get the credit card details submitted by the form
 		token = params[:stripeToken]
 
-		# Create a Customer
-		# customer = Stripe::Customer.create(
-		#   :source => token,
-		#   :description => "payinguser@example.com"
-		# )
-
-		# Charge the Customer instead of the card
-
+		attendee = Attendee.find(params["id"].to_i)
+		event = Event.find(attendee.event.id)
+		if event.cost.nil?
+			event.cost = 17 #cause 17 is cool and arbitrary
+		end
+		total_cost = event.cost * 100
 		
 		charge = Stripe::Charge.create(
-        :amount => 100, # total_cost
+        :amount => total_cost, 
         :currency => "cad",
         :card => token,
         :description => "description of payment",
 		    :capture => false
 		    )
     charge.save
-    binding.pry
-    attendee = Attendee.find(params["id"].to_i)
+
     attendee.charge_id = charge.id
     attendee.save
 
