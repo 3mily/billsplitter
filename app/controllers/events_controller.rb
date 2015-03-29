@@ -17,24 +17,39 @@ class EventsController < ApplicationController
     @event.cost = params["Cost"]
     @event.start = start_time
     @event.end = end_time
+    @event.user_id = current_user.id
     @event.save
     response.headers['X-PJAX-URL'] = "http://localhost:3000/events/invite"
     render :inviteform
   end
 
   def update
-    @event = Event.find(params[:event_id])
-
+    event = Event.find(params['id'])
+    event.closed = true
+    event.save
+    binding.pry
+    
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
-    @event.attendees.each do |attendee|
+    event.attendees.each do |attendee|
        if attendee.charge_id != nil
           charge = Stripe::Charge.retrieve(attendee.charge_id)
           charge.capture  
       end
     end
-    # @event.closed? = true
-    # @event.save!  
+
+    render :details
+
   end
+
+  def details
+    @events = Event.all
+    @closed = 0
+  end
+
+
+
+
+
 end
 
