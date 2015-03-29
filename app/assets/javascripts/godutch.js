@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-	$('.contact').on('click', function(){
+	$(document).on('click', '.contact', function(){
 		$(this).remove();
 		$('#selected').append(this);
 	})	
