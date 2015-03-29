@@ -31,6 +31,7 @@ class PaymentsController < ApplicationController
     charge.save
 
 		# Save the customer ID in your database so you can use it later
+		attendee.stripe_token = charge.id
 		save_stripe_customer_id(user, customer.id)
 
 		# Later...

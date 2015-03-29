@@ -33,6 +33,9 @@ gem 'dotenv-rails'
 # stripe gem to process payment
 gem 'stripe'
 
+# mandrill to send emails
+gem 'mandrill-api', '~> 1.0.53'
+
 # for nice icons to use in our app
 gem 'font-awesome-sass'
 
