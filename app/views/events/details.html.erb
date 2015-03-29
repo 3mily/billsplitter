@@ -14,7 +14,7 @@
       </span>
       <a class="btn btn-warning"></a>
     </label>
-  </div>
+  </div><br>
 
   <% if @events %>
 
@@ -25,8 +25,8 @@
           <% @open += 1 %>
           <div class="one-event" data-event-id="<%=event.id%>">
             <p>
-            <strong><%= event.name %></strong> | <%= event.location %> <button class="close-event"> | Close Event, Collect Money!</button> | <i class="fa fa-close"></i><br>
-            <%= event.cost %>
+            <h4><strong><%= event.name %></strong></h4> | <%= event.location %> | <button class="close-event">Close Event, Collect Money!</button> <span class='removable'> | </span><i class="fa fa-close"></i><br>
+            <p>Total Cost (including self): $<%= (event.cost * event.attendees.count) + event.cost %> | People who've paid <%= event.has_paid?(event.id) %> /<%= event.attendees.count %></p> 
             </p>
           </div>
         <% else %>
@@ -44,7 +44,8 @@
           <div class="one-event" data-event-id="<%=event.id%>">
             <p>
             <strong><%= event.name %></strong> | <%= event.location %> | <i class="fa fa-close"></i><br>
-            <%= event.cost %>
+            <p>Total Cost (including self): $<%= (event.cost * event.attendees.count) + event.cost %></p>
+            <p> </p>
             </p>
           </div>
         <% else %>
