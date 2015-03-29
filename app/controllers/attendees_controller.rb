@@ -12,7 +12,6 @@ class AttendeesController < ApplicationController
 		r_email = invitee.email
 		r_firstname = invitee.firstname
 		email_body = "<html><h1>Hi <strong>message</strong>, how are you?</h1><p> You've been invited to an event on Go Dutch! Follow the link here to participate: localhost:3000/payments/new/"+id+"<p></html>"
-		binding.pry
 	    m = Mandrill::API.new
 			message = {  
 			 :subject=> "Hello, "+r_firstname,  

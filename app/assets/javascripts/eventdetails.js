@@ -1,8 +1,7 @@
 $(document).on('click', '.fa-close', function(){
   var clicked = $(this)
   var eventId = clicked.parents('.one-event').data('event-id')
-  deleteEvent(eventId);
-  alert("delete this");
+  deleteEvent(eventId, clicked);
 
 })
 
@@ -10,11 +9,11 @@ $(document).on('click', '.close-event', function(){
   var clicked = $(this)
   var eventId = clicked.parents('.one-event').data('event-id')
 
-  updateEvent(eventId);
+  updateEvent(eventId, clicked);
 
 })
 
-function updateEvent(id){
+function updateEvent(id, currentEvent){
   $.ajax({
     url: "/events/"+ id,
     type: "PATCH",
@@ -23,13 +22,19 @@ function updateEvent(id){
       console.log("it didnt save or work or something oh noes", thrownError);
     },
     success: function(response){
-      console.log("success event updated")
+      debugger;
+      console.log("success event updated");
+      closedEvent = currentEvent.parents('.one-event');
+      closedEvent.remove();
+      $('#past-events').append(closedEvent);
+      debugger;
+      $('#past-events').children('#no-past').remove();
+      closedEvent.children('p').children('.close-event').remove();
     }
   });  
 }
 
-
-function deleteEvent(id){
+function deleteEvent(id, currentEvent){
   $.ajax({
     url: "/events/"+ id,
     type: "DELETE",
@@ -38,7 +43,8 @@ function deleteEvent(id){
       console.log("it didnt save or work or something oh noes", thrownError);
     },
     success: function(response){
-      console.log("success event updated")
+      console.log("success event deleted")
+      currentEvent.parents('.one-event').remove();
     }
   });  
 }
