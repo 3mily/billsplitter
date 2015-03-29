@@ -1,0 +1,17 @@
+<% if current_user %>
+	
+<div class='front-container'>
+<h1>Hi there.</h1>
+<h2>Stop chasing after your friends to get paid back.
+Just go dutch!</h2>
+</div>
+
+
+  <div class='welcome-msg'><h4>Welcome back, <strong><%= current_user.firstname%>! <i class="fa fa-smile-o"></i></strong></h4></div>
+  <%=link_to 'Hit up your Dashboard', events_details_path, class: "btn btn-success btn-lg" %>
+  <%= link_to 'Create New Event', new_event_path, class: "btn btn-success btn-lg"  %>
+<% else %> 
+	<%= render 'login' %>
+<% end %>
+
+

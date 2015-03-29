@@ -1,0 +1,96 @@
+<div class="main-container">
+  <title>Card pre-authorization</title>
+
+  <h1><strong>Hi, <%= @attendee.contact.firstname %>! <i class="fa fa-smile-o"></i></strong></h1>
+  <h3><strong><%= @attendee.contact.user.firstname %> <%= @attendee.contact.user.lastname %></strong> has invited you to <strong><em><%= @event.name %></em></strong>.</h2><br>
+  <div class='payment-form'>  
+    <table>
+      <tr>
+        <td>Where:</td>
+        <td><%= @event.location %></td>    
+      </tr>
+      <tr>
+        <td>When:</td>
+        <td><%= @event.start.strftime("%B %d, %Y at %l:%M%p") %></td>    
+      </tr>
+      <tr>
+        <td>Cost per person:</td>
+        <td>$<%= @event.cost %></td>    
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td><%= @event.details %></td>    
+      </tr>
+    </table>  
+  </div>
+  <hr>
+
+  <p>To confirm your attendance, please pre-authorize your credit card below.<br>
+  You will only be charged when <%= @attendee.contact.user.firstname %> purchases your ticket on behalf of you.</p> 
+
+  <form action="" method="POST" id="payment-form">
+  <div class="form-card">
+    <span class="payment-errors pink"></span>
+    <div class="form-row">
+      <label>
+        <span>Credit Card Number</span>
+        <input type="text" size="20" data-stripe="number"/>
+      </label>
+    </div>
+
+    <div class="form-row">
+      <label>
+        <span>CVC</span>
+        <input type="text" size="4" data-stripe="cvc"/>
+      </label>
+
+
+      <label>
+        <span>Expiration (MM/YYYY)</span>
+        <input type="text" size="2" data-stripe="exp_month"/>
+      </label>
+      <span> / </span>
+      <input type="text" size="4" data-stripe="exp_year"/>
+    </div>
+    </div>
+
+    <br><button type="submit" class="btn btn-primary btn-lg">Pre-authorize Card</button>
+  </form>
+</div>
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+  Stripe.setPublishableKey('pk_test_UM2QOQibvHmfYyJqQ91GtJW6');
+
+	var stripeResponseHandler = function(status, response) {
+    var $form = $('#payment-form');
+    if (response.error) {
+      // Show the errors on the form
+      $form.find('.payment-errors').text(response.error.message);
+      $form.find('button').prop('disabled', false);
+    } else {
+      // token contains id, last4, and card type
+      var token = response.id;
+      // Insert the token into the form so it gets submitted to the server
+      $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+      // and re-submit
+      $form.get(0).submit();
+    }
+  };
+
+
+	jQuery(function($) {
+	  $('#payment-form').submit(function(event) {
+	    var $form = $(this);
+
+	    // Disable the submit button to prevent repeated clicks
+	    $form.find('button').prop('disabled', true);
+
+	    Stripe.card.createToken($form, stripeResponseHandler);
+
+	    // Prevent the form from submitting with the default action
+	    return false;
+	  });
+	});
+
+</script>

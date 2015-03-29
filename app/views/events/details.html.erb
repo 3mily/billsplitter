@@ -1,0 +1,89 @@
+<div class="main-container">
+  <title>Event Details</title>
+
+    <h1><i class="fa fa-search-plus"></i> Your events</h1>
+    <p>Already picked up the bill for one of these events?<br>Close an existing current event to be paid back!</p>
+    <hr>
+
+  <div class="switch-light-container">
+    <label class="switch-light">
+      <input type="checkbox" id="event-type-toggle">
+      <span>
+        <span>Current Events</span>
+        <span>Past Events</span>
+      </span>
+      <a class="btn btn-warning"></a>
+    </label>
+  </div><br>
+
+  <% if @events %>
+
+    <div id="current-events">
+
+      <% @events.each do |event| %>
+        <% if !event.closed? %>
+          <% @open += 1 %>
+          <div class="one-event" data-event-id="<%=event.id%>">
+            <h4><strong><%= event.name %></strong><i class="fa fa-close" id="right"></i></h4>
+            <table>
+              <tr>
+                <td><i class="fa fa-clock-o"></i> <%= event.start.strftime("%B %d, %Y at %l:%M%p") %></td>
+                <td><i class="fa fa-map-marker"></i> <%= event.location %></td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-money"></i> Total Cost (including self): $<%= (event.cost * event.attendees.where(pre_auth:true).count) + event.cost %></td>
+                <td><i class="fa fa-users"></i> People who've paid: <%= event.has_paid?(event.id) %> /<%= event.attendees.count %></td>
+              </tr>
+            </table>
+            <button class="close-event">Close Event, Collect Money!</button> 
+              <!-- <span class='removable'> | </span> -->
+          </div>
+        <% else %>
+        <% end %>
+      <% end %>
+      <% if @open == 0 %>
+        <p>No Current Events</p>
+      <% end %>
+    </div>
+
+    <div id="past-events" class="hidden">
+      <% @events.each do |event| %>
+        <% if event.closed? %>
+          <% @closed += 1 %>
+          <div class="one-event" data-event-id="<%=event.id%>">
+            <h4><strong><%= event.name %></strong><i class="fa fa-close" id="right"></i></h4>
+            <table>
+              <tr>
+                <td><i class="fa fa-clock-o"></i> <%= event.start.strftime("%B %d, %Y at %l:%M%p") %></td>
+                <td><i class="fa fa-map-marker"></i> <%= event.location %></td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-money"></i> Total Cost (including self): $<%= (event.cost * event.attendees.count) + event.cost %></td>
+                <td><i class="fa fa-users"></i> Total Collected: $<%= event.has_paid?(event.id) * event.cost%></td>
+              </tr>
+            </table>
+              <!-- <span class='removable'> | </span> -->
+          </div>
+        <% else %>
+        <% end %>
+      <% end %>
+      <% if @closed == 0 %>
+        <p id="no-past">No Past Events Yet!</p>
+      <% end %> 
+    </div>
+
+  <% else %>
+    <p>You have made no events yet!</p>
+  <% end %>
+  <br><%= link_to "Make New Event", new_event_path, class: "btn btn-primary btn-lg" %>
+</div>
+
+
+<script>
+  $(function(){
+    $("#event-type-toggle").on("click", function(){
+      $("#current-events").toggleClass("hidden");
+      $("#past-events").toggleClass("hidden");
+    });
+  });
+</script>

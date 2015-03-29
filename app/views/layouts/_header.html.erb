@@ -1,0 +1,14 @@
+<div class="nav-bar dutch-nav">
+	<%= link_to image_tag('logo.png'), '/', class: 'logo pull-left' %>
+	<ul class="nav navbar-nav navbar-right">
+
+    <li> <%= link_to "Dashboard", events_details_path%> </li>
+    <li> <%= link_to "Create New Event", new_event_path %> </li>
+    <li> <%= link_to "About", about_path %> </li>
+    <% if current_user %>
+    	<li class="log-out"> <%= link_to "Log Out", logout_path %> </li>
+    <% else %>
+    	<li class="log-out" style='display:none'> <%= link_to "Log Out", logout_path %> </li>
+    <% end %>
+	</ul>
+</div>

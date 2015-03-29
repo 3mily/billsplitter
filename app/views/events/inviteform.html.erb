@@ -1,0 +1,29 @@
+<div class="main-container">
+  <title>Invite Contacts</title>
+
+  <%= form_tag attendees_path, id: 'invite-pjax' do %>
+
+    <h1><i class="fa fa-user-plus"></i>Invite your friends</h1>
+    <p>Choose who you want to invite from your list of contacts.<br>
+    Invitees will be notified of the event by email.</p>
+    <hr>
+
+    <div>
+      <%= label_tag "Contacts"%> <i class="fa fa-arrow-right"></i> <%= label_tag "Invitees"%><br>
+      <select multiple="multiple" id="my-select" name="my-select[]" class="select-box">
+      <% @contacts.each do |contact| %>
+        <option class="contact" value=<%= contact.id %>> <%= contact.firstname %> <%=contact.lastname%></option>
+      <% end %>
+      </select>
+      
+  	  <select multiple="multiple" id="selected" name="my-select[]" class="select-box">
+  	  </select>
+    </div>
+  <div>
+  <br>
+    <button type= "Submit" class="btn btn-primary btn-lg">Submit</button>
+    <br>
+  </div>    
+  <% end %>
+  <br>
+<small><%= link_to "Add more people to your contact list", contacts_path %></small>
