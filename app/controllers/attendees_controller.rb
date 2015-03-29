@@ -6,8 +6,9 @@ class AttendeesController < ApplicationController
 
   	@invite_list = params["my-select"]
 
-		require 'mandrill'
+  	binding.pry
 
+		require 'mandrill'
     m = Mandrill::API.new
 		message = {  
 		 :subject=> "Hello from the Mandrill API",  
