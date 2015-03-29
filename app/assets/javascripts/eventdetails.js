@@ -10,7 +10,6 @@ $(document).on('click', '.close-event', function(){
   var eventId = clicked.parents('.one-event').data('event-id')
 
   updateEvent(eventId, clicked);
-
 })
 
 function updateEvent(id, currentEvent){
@@ -27,8 +26,8 @@ function updateEvent(id, currentEvent){
       closedEvent.remove();
       $('#past-events').append(closedEvent);
       $('#past-events').children('#no-past').remove();
-      closedEvent.children('p').children('.close-event').remove();
-      closedEvent.children('p').children('.removable').remove();
+      closedEvent.children('.close-event').remove();
+      closedEvent.children('.removable').remove();
     }
   });  
 }
