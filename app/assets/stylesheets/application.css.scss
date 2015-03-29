@@ -6,13 +6,19 @@
 
 $bg: #81B7FF;
 $btn-success: #4896FF;
-$dk-grey: #222;
+$btn-success-hover: #F65C5C;
+$dk-grey: #555;
+
+* {
+  border-radius: 0;
+}
 
 body {
   font-family: 'Lato', sans-serif;
   background-color: $bg;
   margin: 0 auto;
   padding: 100px;
+  color: #333;
 }
 li a {
   color: #C7E1FF;
@@ -29,12 +35,43 @@ label {
   margin: 0 auto;
   text-align: center;
 }
-.logo {
-  opacity: 0.9;
+
+.main-container {
+  padding: 15px;
+  background-color: rgba(250, 250, 250, 0.7);
+  border-bottom: solid 5px #888;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 
-#header{
-  padding-bottom: 50px;
+
+.form-input {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.pink {
+  color: $btn-success-hover;
+}
+
+.form-card {
+  max-width: 350px;
+  text-align: right;
+  margin: 0 auto;
+}
+
+.select-box {
+  padding: 5px;
+  border: none;
+  border-bottom: solid 3px #aaa;
+  width: 120px;
+  user-select: none;
+  -moz-user-select: none;
+}
+
+.logo {
+  opacity: 0.9;
 }
 
 .dutch-nav {
@@ -58,11 +95,26 @@ label {
 
 .btn-primary {
   background-color: $btn-success;
+  margin: 5px;
+}
+.btn-primary:hover {
+  background-color: $btn-success-hover;
+}
+
+.btn-warning {
+  border: none;
+  background-color: $btn-success-hover;
 }
 
 .hidden {
   display: none;
 }
+
+#header{
+  padding-bottom: 50px;
+}
+
+
 
 @media only screen {
   .switch-light-container {

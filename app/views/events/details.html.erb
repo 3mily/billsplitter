@@ -1,4 +1,10 @@
-<title>Event Details</title>
+<div class="main-container">
+  <title>Event Details</title>
+
+    <h1><i class="fa fa-search-plus"></i> Your events</h1>
+    <p>Already picked up the bill for one of these events?<br>Close an existing current event to be paid back!</p>
+    <hr>
+
   <div class="switch-light-container">
     <label class="switch-light">
       <input type="checkbox" id="event-type-toggle">
@@ -10,48 +16,50 @@
     </label>
   </div>
 
-<% if @events %>
+  <% if @events %>
 
-  <div id="current-events">
+    <div id="current-events">
 
-    <% @events.each do |event| %>
-      <% if !event.closed? %>
-        <% @open += 1 %>
-        <div class="one-event" data-event-id="<%=event.id%>">
-          <p>
-          <strong><%= event.name %></strong> | <%= event.location %> <button class="close-event"> | Close Event, Collect Money!</button> | <i class="fa fa-close"></i><br>
-          <%= event.cost %>
-          </p>
-        </div>
-      <% else %>
+      <% @events.each do |event| %>
+        <% if !event.closed? %>
+          <% @open += 1 %>
+          <div class="one-event" data-event-id="<%=event.id%>">
+            <p>
+            <strong><%= event.name %></strong> | <%= event.location %> <button class="close-event"> | Close Event, Collect Money!</button> | <i class="fa fa-close"></i><br>
+            <%= event.cost %>
+            </p>
+          </div>
+        <% else %>
+        <% end %>
       <% end %>
-    <% end %>
-    <% if @open == 0 %>
-      <p>No Current Events</p>
-    <% end %>
-  </div>
-
-  <div id="past-events" class="hidden">
-    <% @events.each do |event| %>
-      <% if event.closed? %>
-        <% @closed += 1 %>
-        <div class="one-event" data-event-id="<%=event.id%>">
-          <p>
-          <strong><%= event.name %></strong> | <%= event.location %> | <i class="fa fa-close"></i><br>
-          <%= event.cost %>
-          </p>
-        </div>
-      <% else %>
+      <% if @open == 0 %>
+        <p>No Current Events</p>
       <% end %>
-    <% end %>
-    <% if @closed == 0 %>
-      <p id="no-past">No Past Events Yet!</p>
-    <% end %> 
-  </div>
+    </div>
 
-<% else %>
-  <p>You have made no events yet!</p>
-<% end %>
+    <div id="past-events" class="hidden">
+      <% @events.each do |event| %>
+        <% if event.closed? %>
+          <% @closed += 1 %>
+          <div class="one-event" data-event-id="<%=event.id%>">
+            <p>
+            <strong><%= event.name %></strong> | <%= event.location %> | <i class="fa fa-close"></i><br>
+            <%= event.cost %>
+            </p>
+          </div>
+        <% else %>
+        <% end %>
+      <% end %>
+      <% if @closed == 0 %>
+        <p id="no-past">No Past Events Yet!</p>
+      <% end %> 
+    </div>
+
+  <% else %>
+    <p>You have made no events yet!</p>
+  <% end %>
+  <br><%= link_to "Make New Event", new_event_path, class: "btn btn-primary btn-lg" %>
+</div>
 
 
 <script>
@@ -62,4 +70,3 @@
     });
   });
 </script>
-<%= link_to "Make New Event", new_event_path %>
