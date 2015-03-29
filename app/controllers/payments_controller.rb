@@ -36,7 +36,7 @@ class PaymentsController < ApplicationController
 		    :capture => false
 		    )
     charge.save
-
+    attendee.pre_auth = true
     attendee.charge_id = charge.id
     attendee.save
 

@@ -58,7 +58,6 @@ class EventsController < ApplicationController
   end
 
   def paid_email(attendee)
-    binding.pry
     attendee_name = attendee.contact.firstname
     email_body = "<html>Hey <strong>"+attendee_name+"</strong>, we've received your payment of $"+attendee.event.cost.to_s+"! Thanks for paying your friend back! </html>"
     m = Mandrill::API.new
