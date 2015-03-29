@@ -11,6 +11,9 @@ class AttendeesController < ApplicationController
 		invitee = Contact.find(user_id = id)
 		r_email = invitee.email
 		r_firstname = invitee.firstname
+		# contact_id = invitee.contact_id
+		binding.pry
+		# attendee = Contact.create("email"= r_email, "event_id"= , "contact_id" = contact_id)
 		email_body = "<html><h1>Hi <strong>message</strong>, how are you?</h1><p> You've been invited to an event on Go Dutch! Follow the link here to participate: localhost:3000/payments/new/"+id+"<p></html>"
 	    m = Mandrill::API.new
 			message = {  
