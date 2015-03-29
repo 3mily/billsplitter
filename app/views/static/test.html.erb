@@ -1,3 +1,7 @@
-
+<% if current_user %>
+  Hello <%= current_user.firstname%>
+  <%=link_to 'Dashboard', events_details_path %>
+  <%= link_to 'Make New Event', new_event_path %>
+<% else %> 
 	<%= render 'login' %>
-
+<% end %>
