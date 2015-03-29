@@ -1,12 +1,9 @@
+<h1> Hi, <%= @attendee.contact.firstname %> </h1>
+<h2><%= @attendee.contact.user.firstname %> has invited you to <%= @event.name %> at <%= @event.location %>.</h2>
+<h2>The cost to attend this is <%= @event.cost %>.</h2>
+<p>To confirm your attendance, please pre-authorize your credit card below.</p>
+<p>You will only be charged when <%= @attendee.contact.user.firstname %> purchases your ticket.</p> 
 
-<hr>
-<% if @contact_firstname %>
-  <h1> Hi, <%= @contact_firstname %> </h1>
-  <p> Pre-Authorize your payment for <%= @event_name %> below: </p>
-<% else %>
-  <h1> Hello! </h1>
-  <p> Pre-authorize your payment below </p>
-<% end %>
 <form action="" method="POST" id="payment-form">
   <span class="payment-errors"></span>
   <div class="form-row">

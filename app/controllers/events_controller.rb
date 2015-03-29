@@ -24,6 +24,7 @@ class EventsController < ApplicationController
   end
 
   def update
+
     event = Event.find(params['id'])
     event.closed = true
     event.save
@@ -31,6 +32,7 @@ class EventsController < ApplicationController
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
     event.attendees.each do |attendee|
+          binding.pry
 
        if attendee.charge_id != nil
 
