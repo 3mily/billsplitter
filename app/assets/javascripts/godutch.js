@@ -3,6 +3,10 @@ $( document ).ready(function() {
 		$(this).remove();
 		$('#selected').append(this);
 	})	
+
+	$(document).on('click', '.glyphicon-calendar', function(){
+		alert("CALENDAR WAS CLICKED");
+	})
 });
 
 
