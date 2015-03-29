@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+
 contact1 = Contact.create(email: "godutchteam@gmail.com", firstname: "Emily", lastname: "Craig", user_id: 1);
 contact2 = Contact.create(email: "godutchteam@gmail.com", firstname: "Gabby", lastname: "Leung", user_id: 1);
 contact3 = Contact.create(email: "godutchteam@gmail.com", firstname: "Maggie", lastname: "Moss", user_id: 1);
+
