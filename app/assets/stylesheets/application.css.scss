@@ -2,6 +2,37 @@
 @import "font-awesome";
 @import "bootstrap.min";
 @import 'bootstrap-datetimepicker';
+
+
+$bg: #81B7FF;
+$btn-success: #4896FF;
+$dk-grey: #222;
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: $bg;
+  margin: 0 auto;
+  padding: 100px;
+}
+li a {
+  color: #C7E1FF;
+}
+li a:hover {  
+  color: #748397;
+}
+
+label {
+  font-size: 1.2em;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+}
+.logo {
+  opacity: 0.9;
+}
+
 #header{
   padding-bottom: 50px;
 }
@@ -21,7 +52,12 @@
   -moz-border-radius: 0px;
   -o-border-radius: 0px;
   border-radius: 0px;
-  border: 0px;
+  border: 0px;    
+  border-bottom: solid 3px $dk-grey;
+}
+
+.btn-primary {
+  background-color: $btn-success;
 }
 
 .hidden {
@@ -100,9 +136,3 @@
     padding: 0; 
   }
 }
-
-body {
-  margin: 0 auto;
-  padding: 100px;
-}
-
